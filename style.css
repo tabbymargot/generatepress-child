@@ -40,15 +40,45 @@
 
 
 /* =================================================== */
-/* Component: Hero */
+/* Component: Hero for single post */
 /* =================================================== */
-.c-hero {
+
+/* Bg image covers whole of screen */
+.c-post-hero {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.c-post-hero__content {
+  color: #fff;
+  text-align: center;
+}
+
+.c-post-hero__title {
+  font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 64px;
+}
+
+.c-post-hero__subhead {
+  margin-bottom: 8rem;
+  margin-top: 0;
+  text-transform: uppercase;
+  font-size: 64px;
+}
+
+.c-post-hero__date {
+ font-size: .875rem;
+ margin: 0;
+ text-transform: uppercase;
+ letter-spacing: .1em;
 }
 
 
@@ -60,7 +90,6 @@
 /* =================================================== */
 /* Component: section heading */
 /* =================================================== */
-
 
 
 
