@@ -25,6 +25,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		if ( generate_show_entry_header() ) :
 			?>
+			<!-- Child theme code -->
 
 			<!-- This code uses CSS inline style attribute to attach hero image as a CSS background -->
 			<!-- Note that get_field('hero_image') returns the path to the image, not the image itself -->
@@ -54,6 +55,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php endif; ?>
 				</div>
 			</section>
+
+			<!-- End child theme code -->
+			
 			<header class="entry-header">
 				
 			</header>

@@ -14,7 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+
+	<!-- Child theme code -->
 	<link href="https://fonts.googleapis.com/css2?family=Tenor+Sans&display=swap" rel="stylesheet">
+	<!-- End child theme code -->
+
 	<?php wp_head(); ?>
 </head>
 
