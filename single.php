@@ -21,12 +21,29 @@ get_header(); ?>
 			 */
 			do_action( 'generate_before_main_content' );
 
+			// while ( have_posts() ) :
+
+			// 	the_post();
+
+			// 	get_template_part( 'content', get_post_type() );
+
+			// 	// generate_do_template_part( 'single' );
+	
+			// endwhile;
+
+
 			if ( generate_has_default_loop() ) {
 				while ( have_posts() ) :
 
 					the_post();
 
-					generate_do_template_part( 'single' );
+					//CUSTOM CODE STARTS HERE
+
+					get_template_part( 'content', get_post_type() );
+
+					// generate_do_template_part( 'single' );
+
+					//CUSTOM CODE ENDS HERE
 
 				endwhile;
 			}
