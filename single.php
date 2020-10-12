@@ -39,7 +39,7 @@ get_header(); ?>
 
 					//CUSTOM CODE STARTS HERE
 
-					get_template_part( 'content', get_post_type() );
+					get_template_part( 'template-parts/content', get_post_type() );
 
 					// generate_do_template_part( 'single' );
 

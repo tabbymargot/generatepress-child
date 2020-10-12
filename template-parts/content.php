@@ -24,39 +24,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 		if ( generate_show_entry_header() ) :
 			?>
 
-			<!-- CUSTOM CODE STARTS HERE -->
-
-			<!-- This code uses CSS inline style attribute to attach hero image as a CSS background -->
-			<!-- Note that get_field('hero_image') returns the path to the image, not the image itself -->
-			<!-- So this code outputs that path into the inline CSS -->
-			<section class="c-post-hero" style="
-				<?php if( get_field('hero_image') ): ?>
-						background-image: url(<?php the_field('hero_image'); ?>)
-				<?php endif; ?>"
-			>
-				<div class="c-post-hero__content">
-					<!-- title -->
-					<h1 class="c-post-hero__title"><?php the_title() ?></h1>
-
-					<!-- subheading -->
-					<?php if( get_field('subhead') ): ?>
-						<p class="c-post-hero__subhead"><?php the_field('subhead'); ?></p>
-					<?php endif; ?>
-
-					<!-- date -->
-					<?php if( get_field('date') ): ?>
-						<p class="c-post-hero__date">
-							<?php 
-								// convert date into format readable by PHP, and then convert it into a string
-								echo date ("F Y", strtotime(get_field('date')));	
-							?>
-						</p>
-					<?php endif; ?>
-				</div>
-			</section>
-
-			<!-- CUSTOM CODE ENDS HERE -->
-
 			<header class="entry-header">
 				<?php
 				/**
