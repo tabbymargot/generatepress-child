@@ -40,7 +40,7 @@
 
 
 /* =================================================== */
-/* Component: Hero for single post */
+/* Component: Heroes */
 /* =================================================== */
 
 /* Bg image covers whole of screen */
@@ -87,9 +87,23 @@
 
 
 /* =================================================== */
-/* Component: Intro */
+/* Component: Single post headers */
 /* =================================================== */
 
+.c-single-post-header{
+  display: flex;
+}
+
+.c-single-post-header-image {
+  width: 60%;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.c-single-post-header-intro{
+  width: 40%;
+}
 
 /* =================================================== */
 /* Component: section heading */

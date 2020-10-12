@@ -10,7 +10,46 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_do_microdata( 'article' ); ?>>
+
 	<div class="inside-article">
+		<?php 
+			// Checks for a row called content:
+			if( have_rows('content') ): while ( have_rows('content') ) : the_row();
+			// If 'content' exists, check for a row layout called 'header', and if it exists, go through the data and echo it out:
+			if( get_row_layout() == 'header' ): ?>
+
+				<!-- Header wrapper -->
+				<div class="c-single-post-header">
+
+					<!-- Header image -->
+					<div class="c-single-post-header-image" style="
+						<?php if( get_field('hero_image') ): ?>
+								background-image: url(<?php the_field('hero_image'); ?>)
+						<?php endif; ?>"
+					>
+
+					</div>
+
+					<!-- Header intro -->
+					<div class="c-single-post-header-intro">
+						<!-- data shared from our hero -->
+						<?php the_field('date'); ?>
+						<!-- standard wordpress data -->
+						<?php the_title(); ?>
+						<?php the_field('subhead'); ?>
+						
+					</div>
+
+				</div>
+			<!-- specific to this component (ACF calls components 'layouts') -->
+			<?php the_sub_field('header_intro'); ?>	
+			<?php 
+				//If there's no header, check for a 'text-block', and then echo out the data:
+				elseif( get_row_layout() == 'text_block' ): ?>
+				<?php the_sub_field('text_content'); ?>
+			<?php endif; 
+		endwhile; endif; 
+		?>
 		<?php
 		/**
 		 * generate_before_content hook.
@@ -25,6 +64,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 			?>
 
 			<header class="entry-header">
+
+				<!-- CUSTOM CODE STARTS HERE -->
+
+			
+
+				<!-- CUSTOM CODE ENDS HERE -->
+
 				<?php
 				/**
 				 * generate_before_entry_title hook.
@@ -76,7 +122,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 		<?php else : ?>
 
-			<div class="entry-content"<?php echo $itemprop; // phpcs:ignore -- No escaping needed. ?>>
+			<div class="entry-content"<?php echo $itemprop; // phpcs:ignore -- No escaping needed. ?>
+
 				<?php
 				the_content();
 
