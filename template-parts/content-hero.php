@@ -1,5 +1,9 @@
 <!-- CUSTOM CODE STARTS HERE -->
-
+  <a href="<?php the_permalink(); ?>">
+    <h1>
+      Check out <?php the_title(); ?>!
+    </h1>
+  </a>
   <!-- This code uses CSS inline style attribute to attach hero image as a CSS background -->
   <!-- Note that get_field('hero_image') returns the path to the image, not the image itself -->
   <!-- So this code outputs that path into the inline CSS -->

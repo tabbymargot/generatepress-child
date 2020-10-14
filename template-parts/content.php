@@ -12,6 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?> <?php generate_do_microdata( 'article' ); ?>>
 
 	<div class="inside-article">
+
+		<!-- CUSTOM CODE STARTS HERE -->
 		<?php 
 			// Checks for a row called content:
 			if( have_rows('content') ): while ( have_rows('content') ) : the_row();
@@ -19,37 +21,55 @@ if ( ! defined( 'ABSPATH' ) ) {
 			if( get_row_layout() == 'header' ): ?>
 
 				<!-- Header wrapper -->
-				<div class="c-single-post-header">
+				<div class="c-single-post-header c-single-post-header@m">
 
 					<!-- Header image -->
-					<div class="c-single-post-header-image" style="
+					<div class="c-single-post-header-image c-single-post-header-image@m" style="
 						<?php if( get_field('hero_image') ): ?>
 								background-image: url(<?php the_field('hero_image'); ?>)
 						<?php endif; ?>"
 					>
-
 					</div>
 
-					<!-- Header intro -->
-					<div class="c-single-post-header-intro">
+					<!-- Header content -->
+					<div class="c-single-post-header-content c-single-post-header-content@m">
 						<!-- data shared from our hero -->
-						<?php the_field('date'); ?>
-						<!-- standard wordpress data -->
-						<?php the_title(); ?>
-						<?php the_field('subhead'); ?>
-						
+						<div class="c-single-post-header-content-wrapper">
+							<p class="c-single-post-header-date">
+								<?php 
+									// convert date into format readable by PHP, and then convert it into a string
+									echo date ("F Y", strtotime(get_field('date')));	
+								?>
+							</p>
+								<!-- standard wordpress data -->
+								<h1 class="c-single-post-header-title">
+									<?php the_title(); ?>
+								</h1>
+								
+								<p class="c-single-post-header-subhead">
+									<?php the_field('subhead'); ?>
+								</p>
+								<!-- specific to this component (ACF calls components 'layouts') -->
+								<p class="c-single-post-header-description">
+									<?php the_sub_field('header_intro'); ?>	
+								</p>
+						</div>	
 					</div>
-
 				</div>
-			<!-- specific to this component (ACF calls components 'layouts') -->
-			<?php the_sub_field('header_intro'); ?>	
+			
 			<?php 
 				//If there's no header, check for a 'text-block', and then echo out the data:
 				elseif( get_row_layout() == 'text_block' ): ?>
-				<?php the_sub_field('text_content'); ?>
+
+				<div class="c-single-post-textblock">
+					<?php the_sub_field('text_content'); ?>
+				</div>
+
 			<?php endif; 
 		endwhile; endif; 
 		?>
+		<!-- CUSTOM CODE ENDS HERE -->
+		
 		<?php
 		/**
 		 * generate_before_content hook.
