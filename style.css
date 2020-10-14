@@ -104,6 +104,7 @@
 @media (max-width: 1000px) {
   .c-single-post-header-image\@m {
     width: 100%;
+    min-height: 50vh;
   }
 }
 

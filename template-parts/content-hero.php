@@ -26,7 +26,9 @@
         <p class="c-post-hero__date">
           <?php 
             // convert date into format readable by PHP, and then convert it into a string
-            echo date ("F Y", strtotime(get_field('date')));	
+            //custom function defined in functions.php and called here
+            nice_date(get_field('date'));
+            // echo date ("F Y", strtotime(get_field('date')));	
           ?>
         </p>
       <?php endif; ?>

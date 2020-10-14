@@ -38,7 +38,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<p class="c-single-post-header-date">
 								<?php 
 									// convert date into format readable by PHP, and then convert it into a string
-									echo date ("F Y", strtotime(get_field('date')));	
+									//custom function defined in functions.php and called here
+									nice_date(get_field('date'));
 								?>
 							</p>
 								<!-- standard wordpress data -->

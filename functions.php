@@ -12,3 +12,11 @@ function generatepress_child_enqueue_scripts() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'generatepress_child_enqueue_scripts', 100 );
+
+//CUSTOM CODE STARTS HERE
+
+//Convert date into format readable by PHP, and then convert it into a string
+
+function nice_date($date) {
+	echo date ("F Y", strtotime($date));
+}
