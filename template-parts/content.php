@@ -70,6 +70,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<?php the_sub_field('text_content'); ?>
 				</div>
 
+				<?php 
+					elseif ( get_row_layout() == 'gallery' ):
+				?>
+				<h1>Here's the gallery</h1>
+				<?php 
+					$images = get_sub_field('gallery') 
+				?>
+
+				<?php 
+					foreach($images as $image) {
+						print_r($image);
+					}
+				?>
+
 			<?php endif; 
 		endwhile; endif; 
 		?>
