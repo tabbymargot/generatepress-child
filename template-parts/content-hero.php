@@ -8,9 +8,13 @@
   <!-- Note that get_field('hero_image') returns the path to the image, not the image itself -->
   <!-- So this code outputs that path into the inline CSS -->
   <section class="c-post-hero" style="
-    <?php if( get_field('hero_image') ): ?>
-        background-image: url(<?php the_field('hero_image'); ?>)
-    <?php endif; ?>"
+    <?php 
+      //In the video he removes the conditional 'if' part of this code - I think this a mistake
+      if( get_field('hero_image') ):
+      //Custom function
+      nice_background('hero_image');
+      endif; 
+    ?>"
   >
     <div class="c-post-hero__content">
       <!-- title -->

@@ -25,9 +25,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 					<!-- Header image -->
 					<div class="c-single-post-header-image c-single-post-header-image@m" style="
-						<?php if( get_field('hero_image') ): ?>
-								background-image: url(<?php the_field('hero_image'); ?>)
-						<?php endif; ?>"
+						<?php 
+							//In the video he removes the conditional 'if' part of this code - I think this a mistake, as if there's no hero image in ACF the page doesn't load at all.
+							if( get_field('hero_image') ):
+							//Custom function
+							nice_background('hero_image');
+							endif; 
+						?>"
 					>
 					</div>
 
@@ -68,6 +72,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<?php endif; 
 		endwhile; endif; 
+		?>
+
+		<?php 
+			// get an image by its ID and the size we want
+			echo wp_get_attachment_image(50, 'full'); 
 		?>
 		<!-- CUSTOM CODE ENDS HERE -->
 		
