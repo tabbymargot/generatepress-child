@@ -74,12 +74,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 		endwhile; endif; 
 		?>
 
-		<?php 
-			// get an image by its ID and the size we want
-			echo wp_get_attachment_image(50, 'full'); 
-		?>
+		<div class="c-gallery-image">
+			<?php 
+				// get an image by its ID and the size we want
+				echo wp_get_attachment_image(46, 'full');
+			?>
+			<p class="o-caption">
+				<?php 
+					// get image caption by id
+					echo wp_get_attachment_caption(46); 
+				?>
+			</p>	
+		</div>
 		<!-- CUSTOM CODE ENDS HERE -->
-		
+
 		<?php
 		/**
 		 * generate_before_content hook.
