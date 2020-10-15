@@ -35,38 +35,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php 
 				elseif ( get_row_layout() == 'gallery' ):
 			?>
-				
-			<?php 
-				$images = get_sub_field('gallery') 
+
+			<?php
+				get_template_part( 'template-parts/content-gallery', get_post_type() );
 			?>
-
-			<?php foreach($images as $image) : ?>
-				<div class="c-gallery-image">
-					<?php 
-						// get each image by its ID and the size we want
-						echo wp_get_attachment_image($image['id'], 'full');
-					?>
-					<?php
-						//Set variable to hold caption
-						$caption = wp_get_attachment_caption($image['id']);
-					?>
-
-					<?php 
-						//Check to see if $caption is/isn't empty
-						if(!empty($caption)) :
-					?>
-
-						<p class="o-caption">
-							<?php 
-								// If it's not empty, echo $caption
-								echo $caption; 
-							?>
-						</p>
-						
-					<?php  endif; ?>	
-				</div>
-					
-			<?php endforeach; ?>
 
 			<?php endif; 
 		endwhile; endif; 
