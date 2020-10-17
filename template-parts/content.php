@@ -44,6 +44,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 		endwhile; endif; 
 		?>
 
+		<?php
+			get_template_part( 'template-parts/content-explore', get_post_type() );
+		?>
+
 		
 		<!-- CUSTOM CODE ENDS HERE -->
 
