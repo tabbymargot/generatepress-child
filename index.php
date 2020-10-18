@@ -27,36 +27,57 @@ get_header(); ?>
 			 */
 			do_action( 'generate_before_main_content' );
 
-			if ( generate_has_default_loop() ) {
-				if ( have_posts() ) :
+			//I HAVE COMMENTED OUT THE DEFAULT LOOP, AS I'M RUNNING A WP_QUERY BELOW
 
-					while ( have_posts() ) :
+			// if ( generate_has_default_loop() ) {
+			// 	if ( have_posts() ) :
 
-						the_post();
+			// 		while ( have_posts() ) :
 
-						//CUSTOM CODE STARTS HERE
+			// 			the_post();
 
-						get_template_part( 'template-parts/content-hero', get_post_type() );
+						
 
-						//generate_do_template_part( 'index' );
+			// 		endwhile;
 
-						//CUSTOM CODE ENDS HERE
+			// 		/**
+			// 		 * generate_after_loop hook.
+			// 		 *
+			// 		 * @since 2.3
+			// 		 */
+			// 		do_action( 'generate_after_loop', 'index' );
 
-					endwhile;
+			// 	else :
 
-					/**
-					 * generate_after_loop hook.
-					 *
-					 * @since 2.3
-					 */
-					do_action( 'generate_after_loop', 'index' );
+			// 		generate_do_template_part( 'none' );
 
-				else :
+			// 	endif;
+			// }
 
-					generate_do_template_part( 'none' );
+			//CUSTOM CODE STARTS HERE
+					
+				// we can also do our options like this too
 
-				endif;
-			}
+				//Get one post which is a random one each time, and store in $query variable
+				$query = new WP_Query('posts_per_page=1&orderby=rand');
+
+				if ($query->have_posts()): while ($query->have_posts()): $query->the_post();
+
+					// get the id for our current post and store it in a variable
+					//$hero_post is a global variable, and is used in content-navigate.php. More notes there.
+					$hero_post = get_the_ID();
+
+					//run this content
+					get_template_part('template-parts/content-hero');
+
+				endwhile; endif;
+					get_template_part('template-parts/content-about');
+					get_template_part('template-parts/content-navigate');
+					get_template_part('template-parts/content-bio');
+			
+					//CUSTOM CODE ENDS HERE
+
+			// generate_do_template_part( 'index' );
 
 			/**
 			 * generate_after_main_content hook.
